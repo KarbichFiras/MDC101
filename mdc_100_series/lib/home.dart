@@ -47,6 +47,7 @@ class HomePage extends StatelessWidget {
                 product.assetName,
                 package: product.assetPackage,
                 // TODO: Adjust the box size (102)
+                fit: BoxFit.fitWidth,
               ),
             ),
             Expanded(
@@ -123,7 +124,7 @@ class HomePage extends StatelessWidget {
           crossAxisCount: 2,
           padding: const EdgeInsets.all(16.0),
           childAspectRatio: 8.0 / 9.0,
-          children: _buildGridCards(10) // Replace
+          children: _buildGridCards(context) // Changed code
       ),
 
       // TODO: Set resizeToAvoidBottomInset (101)
