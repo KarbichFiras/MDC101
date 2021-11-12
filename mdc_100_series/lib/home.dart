@@ -28,7 +28,15 @@ class HomePage extends StatelessWidget {
       // TODO: Add app bar (102)
       appBar: AppBar(
         title: const Text('SHRINE'),
-       
+        leading: IconButton(
+          icon: const Icon(
+            Icons.menu,
+            semanticLabel: 'menu',
+          ),
+          onPressed: () {
+            print('Menu button');
+          },
+        ),
       ),
       // TODO: Add a grid view (102)
       body: Center(
