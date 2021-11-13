@@ -21,11 +21,13 @@ class TwoProductCardColumn extends StatelessWidget {
   const TwoProductCardColumn({
     required this.bottom,
     this.top,
-    Key? key,
+    Key? key, required this.product,
   }) : super(key: key);
 
   final Product bottom;
   final Product? top;
+
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -39,28 +41,15 @@ class TwoProductCardColumn extends StatelessWidget {
       double imageAspectRatio = constraints.biggest.width / heightOfImages;
 
       // TODO: Replace Column with a ListView (104)
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      return ListView(
+        physics: const ClampingScrollPhysics(),
+        reverse: true,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsetsDirectional.only(start: 28.0),
-            child: top != null
-                ? ProductCard(
-                    imageAspectRatio: imageAspectRatio,
-                    product: top!,
-                  )
-                : SizedBox(
-                    height: heightOfCards,
-                  ),
+          const SizedBox(
+            height: 40.0,
           ),
-          const SizedBox(height: spacerHeight),
-          Padding(
-            padding: const EdgeInsetsDirectional.only(end: 28.0),
-            child: ProductCard(
-              imageAspectRatio: imageAspectRatio,
-              product: bottom,
-            ),
+          ProductCard(
+            product: product,
           ),
         ],
       );
