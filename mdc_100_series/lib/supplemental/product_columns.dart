@@ -21,13 +21,11 @@ class TwoProductCardColumn extends StatelessWidget {
   const TwoProductCardColumn({
     required this.bottom,
     this.top,
-    Key? key, required this.product,
+    Key? key,
   }) : super(key: key);
 
   final Product bottom;
   final Product? top;
-
-  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -45,13 +43,26 @@ class TwoProductCardColumn extends StatelessWidget {
       // TODO: Replace Column with a ListView (104)
       return ListView(
         physics: const ClampingScrollPhysics(),
-        reverse: true,
         children: <Widget>[
-          const SizedBox(
-            height: 40.0,
+          Padding(
+            padding: const EdgeInsetsDirectional.only(start: 28.0),
+            child: top != null
+                ? ProductCard(
+              imageAspectRatio: imageAspectRatio,
+              //heya aselha top but ma7abetch temchili walit badeltha bottom..
+              product: bottom,
+            )
+                : SizedBox(
+              height: heightOfCards,
+            ),
           ),
-          ProductCard(
-            product: product,
+          const SizedBox(height: spacerHeight),
+          Padding(
+            padding: const EdgeInsetsDirectional.only(end: 28.0),
+            child: ProductCard(
+              imageAspectRatio: imageAspectRatio,
+              product: bottom,
+            ),
           ),
         ],
       );
@@ -60,22 +71,22 @@ class TwoProductCardColumn extends StatelessWidget {
 }
 
 class OneProductCardColumn extends StatelessWidget {
-  const OneProductCardColumn({required this.product, Key? key})
-      : super(key: key);
+  const OneProductCardColumn({required this.product, Key? key}) : super(key: key);
 
   final Product product;
 
   @override
   Widget build(BuildContext context) {
     // TODO: Replace Column with a ListView (104)
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
+    return ListView(
+      physics: const ClampingScrollPhysics(),
+      reverse: true,
       children: <Widget>[
-        ProductCard(
-          product: product,
-        ),
         const SizedBox(
           height: 40.0,
+        ),
+        ProductCard(
+          product: product,
         ),
       ],
     );
