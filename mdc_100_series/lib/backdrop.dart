@@ -101,6 +101,10 @@ class _BackdropState extends State<Backdrop>
       key: _backdropKey,
       children: <Widget>[
         // TODO: Wrap backLayer in an ExcludeSemantics widget (104)
+        ExcludeSemantics(
+          child: widget.backLayer,
+          excluding: _frontLayerVisible,
+        ),
         widget.backLayer,
         // TODO: Add a PositionedTransition (104)
         // TODO: Wrap front layer in _FrontLayer (104)
