@@ -18,6 +18,7 @@ import 'backdrop.dart';
 import 'home.dart';
 import 'login.dart';
 import 'colors.dart';
+import 'category_menu_page.dart';
 import 'model/product.dart';
 import 'supplemental/cut_corners_border.dart';
 
